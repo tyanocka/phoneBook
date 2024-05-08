@@ -9,5 +9,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::resource('phonebook', PhonebookController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('phonebook', PhonebookController::class);
+});
